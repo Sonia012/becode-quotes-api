@@ -10,7 +10,7 @@ app.use(express.static(`public`));
 
 require("./routes/quoteRoutes")(app);
 
-mongoose.connect("mongodb+srv://root:root@becode-taakq.mongodb.net/quotesDB",{useNewUrlParser: true});
+mongoose.connect(process.env.MONGODB_URI,{useNewUrlParser: true});
 
 
 const PORT = process.env.PORT || 5000;
