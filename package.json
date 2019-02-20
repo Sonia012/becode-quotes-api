@@ -1,0 +1,30 @@
+{
+  "name": "becode-quotes-api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Sonia012/becode-quotes-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Sonia012/becode-quotes-api/issues"
+  },
+  "homepage": "https://github.com/Sonia012/becode-quotes-api#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "browserify": "^16.2.3",
+    "express": "^4.16.4",
+    "mongoose": "^5.4.13",
+    "watchify": "^3.11.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.10"
+  }
+}
