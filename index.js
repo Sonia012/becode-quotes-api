@@ -13,7 +13,7 @@ require("./routes/quoteRoutes")(app);
 mongoose.connect("mongodb+srv://root:root@becode-taakq.mongodb.net/quotesDB",{useNewUrlParser: true});
 
 
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
   console.log(`Server running`);
