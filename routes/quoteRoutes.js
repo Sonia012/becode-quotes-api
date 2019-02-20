@@ -4,32 +4,31 @@ const Quote = require(`../models/Quote`);
 
 module.exports = app => {
 
+  app.get("/", (req, res) => {
+    res.render('index');
+  })
 
-    app.get("/quotes", (req, res) => {
-      console.log("fetching all quotes");
+  app.get("/quotes", (req, res) => {
+    console.log("fetching all quotes");
 
-      mongoose.model(`Quote`).find((err, quotes) => {
-        res.send(quotes)
+    mongoose.model(`Quote`).find((err, quotes) => {
+      res.send(quotes)
+    })
+  })
+
+  app.post("/quotes", (req, res) => {
+    console.log("Posting a new quote")
+
+    const quote = new Quote({
+      quote: req.body.quote,
+      author: req.body.author
+    });
+    quote.save().then(result => {
+        console.log(result);
       })
-    })
-
-  // const post = $(`#post`)[0];
-  // console.log(post);
-  // post.addEventListener(`click`, function() {
-    app.post("/quotes", (req, res) => {
-      console.log("Posting a new quote")
-
-      const quote = new Quote({
-        quote: req.body.quote,
-        author: req.body.author
-      });
-      quote.save().then(result => {
-          console.log(result);
-        })
-        .catch(err => console.log(err));
-      res.sendStatus(200);
-    })
-  // })
+      .catch(err => console.log(err));
+    res.sendStatus(200);
+  })
 
   app.delete("/quotes/:quoteId", (req, res) => {
     console.log("deleting a quote");
@@ -52,24 +51,31 @@ module.exports = app => {
     console.log("updating a quote");
     let id = req.params.quoteId;
 
-    Quote.findOneAndUpdate({_id: id}, {quote: req.body.quote, author: req.body.author},(err, result) => {
-        if (err) {
-          console.log(err);
-          return res.sendStatus(500);
-        }
-        console.log("quote updated");
-        res.sendStatus(200)
-      })
+    Quote.findOneAndUpdate({
+      _id: id
+    }, {
+      quote: req.body.quote,
+      author: req.body.author
+    }, (err, result) => {
+      if (err) {
+        console.log(err);
+        return res.sendStatus(500);
+      }
+      console.log("quote updated");
+      res.sendStatus(200)
+    })
   })
 
   app.get("/quotes/:quoteId", (req, res) => {
     console.log("getting a quote");
     let id = req.params.quoteId;
 
-    Quote.find({_id: id}).then(result => {
+    Quote.find({
+      _id: id
+    }).then(result => {
       console.log(result);
       res.send(result);
-      })
+    })
   })
 
 }
