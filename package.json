@@ -19,7 +19,6 @@
   "homepage": "https://github.com/Sonia012/becode-quotes-api#readme",
   "dependencies": {
     "body-parser": "^1.18.3",
-    "browserify": "^16.2.3",
     "express": "^4.16.4",
     "mongoose": "^5.4.13",
     "watchify": "^3.11.1"
