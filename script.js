@@ -1,16 +1,16 @@
 fetch('https://becodequotes-api.herokuapp.com/quotes')
-  .then((response) => {
+  .then(function(response) {
     return response.json();
   })
-  .catch((error) => {
+  .catch(function(error) {
     console.log(error);
   })
-  .then((myJson) => {
-    displayOnScreen(myJson)
-  }
-  );
+  .then(function(myJson) {
+    console.log(myJson)
+    // displayOnScreen(myJson)
+  });
 
-  function displayOnScreen(myJson) {
-  $("#quote").text(JSON.stringify(myJson.quote));
-  $("#author").text(JSON.stringify(myJson.author));
-}
+// function displayOnScreen(myJson) {
+//   $("#quote").text(JSON.stringify(myJson.quote));
+//   $("#author").text(JSON.stringify(myJson.author));
+// }
