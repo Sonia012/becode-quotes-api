@@ -6,8 +6,9 @@ const app = express();
 const dotenv = require(`dotenv`);
 dotenv.config()
 
-// app.use(bodyParser.json());
+
 app.use(bodyParser.urlencoded({ extended: true }))
+app.use(bodyParser.json())
 app.use(express.static(`public`));
 
 app.use(function(req, res, next) {
