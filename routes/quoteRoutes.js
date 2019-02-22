@@ -18,16 +18,18 @@ module.exports = app => {
 
   app.post("/quotes", (req, res) => {
     console.log("Posting a new quote")
+    console.log(req.body)
 
     const quote = new Quote({
       quote: req.body.quote,
       author: req.body.author
     });
-    quote.save().then(result => {
-        console.log(result);
-      })
-      .catch(err => console.log(err));
-    res.sendStatus(200);
+    quote.save((err, quote) => {
+      if(err) {
+        res.send(err)
+      }
+      res.send(200, quote)
+    })
   })
 
   app.delete("/quotes/:quoteId", (req, res) => {
